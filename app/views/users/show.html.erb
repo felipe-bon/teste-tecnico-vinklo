@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4">User <%= @user.name%> infos</h1>
+  <h2 class="my-4"> Email: <%= @user.email%> </h2>
+  <h2 class="my-4"> CPF: <%= @user.cpf%> </h2>
+  <h2 class="my-4"> Phone: <%= @user.phone%> </h2>
+  <hr class="my-4">
+  <p class="lead">
+  <div>
+    <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Back to users", users_path %>
+
+    <%= button_to "Delete", @user, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+
+  </div>
+  </p>
+</div>

@@ -1,0 +1,42 @@
+
+<br>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>CPF</th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for User" %>
+    <%= hidden_field_tag :reset, "true" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  
+  
+  <tbody>
+    
+    <% @users.each do |user| %>
+      <tr >
+        <div>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.format_phone_number %></td>
+          <td><%= user.format_cpf %></td>
+        </div>  
+        <td>
+        <%= button_to "Delete", user, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+        <%= link_to "show", user%>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New User', new_user_path, class:"btn btn-secondary" %>
